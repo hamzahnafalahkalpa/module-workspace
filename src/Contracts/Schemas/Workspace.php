@@ -16,7 +16,7 @@ use Hanafalah\ModuleWorkspace\Contracts\Data\WorkspaceData;
  * @method array showWorkspace(?Model $model = null)
  * @method Collection prepareViewWorkspaceList()
  * @method array viewWorkspaceList()
- * @method array function storeWorkspace(?WorkspaceData $workspace_dto = null)
+ * @method array storeWorkspace(?WorkspaceData $workspace_dto = null)
  * @method LengthAwarePaginator prepareViewWorkspacePaginate(PaginateData $paginate_dto)
  * @method array viewWorkspacePaginate(?PaginateData $paginate_dto = null)
  * @method Builder workspace(mixed $conditionals = null)
