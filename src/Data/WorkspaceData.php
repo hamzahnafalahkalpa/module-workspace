@@ -37,6 +37,7 @@ class WorkspaceData extends Data implements DataWorkspaceData{
         }else{
             $data->status = Status::DRAFT->value;
         }
+        
         return $data;
     }
 }

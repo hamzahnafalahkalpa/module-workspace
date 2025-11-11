@@ -20,7 +20,11 @@ class ViewWorkspace extends ApiResource
             'id'        => $this->id,
             'uuid'      => $this->uuid,
             'name'      => $this->name,
-            'phone'     => $this->phone
+            'phone'     => $this->phone,
+            'owner_id'  => $this->owner_id,
+            'owner'     => $this->prop_owner,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
         ];
 
         return $arr;

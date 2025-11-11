@@ -10,11 +10,11 @@ class SettingWorkspace extends ApiResource{
         $arr = [            
             "email"    => $this['email'] ?? null,
             'stakeholder' => $this['stakeholder'] ?? null,
-            "owner_id" => $this['owner_id'] ?? null,
-            "owner"    => [
-                "id"   => $this['owner']['id'] ?? null,
-                "name" => $this['owner']['name'] ?? null
-            ],
+            // "owner_id" => $this['owner_id'] ?? null,
+            // "owner"    => [
+            //     "id"   => $this['owner']['id'] ?? null,
+            //     "name" => $this['owner']['name'] ?? null
+            // ],
             "phone"              => $this['phone'] ?? null,
             "timezone"           => $this['timezone'] ?? 'Asia/Jakarta',
             "address"            => [

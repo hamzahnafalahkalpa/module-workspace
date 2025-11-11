@@ -17,7 +17,7 @@ class Workspace extends PackageManagement implements ContractsWorkspace
         'show' => [
             'name'     => 'workspace',
             'tags'     => ['workspace', 'workspace-show'],
-            'forever'  => true
+            'duration' => 24*60 
         ]
     ];
 
