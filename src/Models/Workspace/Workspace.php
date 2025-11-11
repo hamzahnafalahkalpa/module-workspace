@@ -22,12 +22,13 @@ class Workspace extends BaseModel
     protected $keyType    = 'string';
     protected $primaryKey = 'id';
     protected $list = [
-        'id', 'uuid', 'name', 'status', 'props'
+        'id', 'uuid', 'name', 'owner_id', 'status', 'props'
     ];  
 
     protected $casts = [
         'uuid' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'owner_id' => 'string',
     ];
 
     protected static function booted(): void{
@@ -65,6 +66,7 @@ class Workspace extends BaseModel
     }
 
     public function tenant(){return $this->morphOneModel('Tenant','reference');}
+    public function owner(){return $this->belongsToModel('User','owner_id');}
 
     public function toSettingApi(){
         return ($this->getSettingResource() !== null)

@@ -24,7 +24,8 @@ class Workspace extends PackageManagement implements ContractsWorkspace
     public function prepareStoreWorkspace(WorkspaceData $workspace_dto): Model{
         $add = [
             'name'   => $workspace_dto->name, 
-            'status' => $workspace_dto->status
+            'status' => $workspace_dto->status,
+            'owner_id' => $workspace_dto->owner_id,
         ];
         if (isset($workspace_dto->uuid)){
             $guard = ['uuid' => $workspace_dto->uuid];

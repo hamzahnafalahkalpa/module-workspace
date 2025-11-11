@@ -17,7 +17,11 @@ class WorkspaceData extends Data implements DataWorkspaceData{
     #[MapInputName('name')]
     #[MapName('name')]
     public string $name;
-    
+
+    #[MapInputName('owner_id')]
+    #[MapName('owner_id')]
+    public ?string $owner_id = null;
+
     #[MapInputName('status')]
     #[MapName('status')]
     public ?string $status = null;
