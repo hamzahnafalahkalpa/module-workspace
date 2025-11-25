@@ -67,6 +67,8 @@ class Workspace extends BaseModel
 
     public function tenant(){return $this->morphOneModel('Tenant','reference');}
     public function owner(){return $this->belongsToModel('User','owner_id');}
+    public function installedFeature(){return $this->morphOneModel('InstalledFeature','model');}
+    public function installedFeatures(){return $this->morphManyModel('InstalledFeature','model');}
 
     public function toSettingApi(){
         return ($this->getSettingResource() !== null)
