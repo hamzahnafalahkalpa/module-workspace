@@ -21,7 +21,7 @@ class Workspace extends PackageManagement implements ContractsWorkspace
         ]
     ];
 
-    public function prepareStoreWorkspace(WorkspaceData $workspace_dto): Model{
+    protected function prepareUpdateCreate(WorkspaceData $workspace_dto){
         $add = [
             'name'   => $workspace_dto->name, 
             'status' => $workspace_dto->status,
@@ -33,7 +33,11 @@ class Workspace extends PackageManagement implements ContractsWorkspace
         }else{
             $create = [$add];
         }
-        $model = $this->usingEntity()->updateOrCreate(...$create);
+        return $this->usingEntity()->updateOrCreate(...$create);
+    }
+
+    public function prepareStoreWorkspace(WorkspaceData $workspace_dto): Model{
+        $model = $this->prepareUpdateCreate($workspace_dto);
         if (isset($workspace_dto->props->setting->address)) {
             $this->prepareStoreAddressWorkspace($model, $workspace_dto);
         }
