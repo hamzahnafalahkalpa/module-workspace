@@ -13,6 +13,10 @@ class WorkspaceData extends Data implements DataWorkspaceData{
     #[MapInputName('uuid')]
     #[MapName('uuid')]
     public ?string $uuid = null;
+
+    #[MapInputName('workspace_model')]
+    #[MapName('workspace_model')]
+    public ?object $workspace_model = null;
     
     #[MapInputName('name')]
     #[MapName('name')]
