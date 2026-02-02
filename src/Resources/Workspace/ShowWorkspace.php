@@ -17,7 +17,8 @@ class ShowWorkspace extends ViewWorkspace
     public function toArray(Request $request): array
     {
         $arr = [
-            'setting' => $this->toSettingApi()
+            'setting' => $this->toSettingApi(),
+            'integration' => $this->integration
         ];
         $arr = $this->mergeArray(parent::toArray($request), $arr);
         return $arr;
