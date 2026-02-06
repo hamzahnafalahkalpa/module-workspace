@@ -38,7 +38,7 @@ class Workspace extends PackageManagement implements ContractsWorkspace
 
     public function prepareStoreWorkspace(WorkspaceData $workspace_dto): Model{
         $model = $this->prepareUpdateCreate($workspace_dto);
-        if (isset($workspace_dto->props->setting->address)) {
+        if (isset($workspace_dto->props->setting->address) && isset($workspace_dto->props->setting->address->name)) {
             $this->prepareStoreAddressWorkspace($model, $workspace_dto);
         }
         if (isset($workspace_dto->props->setting->logo)) {
@@ -51,12 +51,13 @@ class Workspace extends PackageManagement implements ContractsWorkspace
     }
 
     protected function prepareStoreAddressWorkspace(Model $workspace, WorkspaceData &$workspace_dto): void{
-        $address             = &$workspace_dto->props->setting->address;
-        $address->model_type = $workspace->getMorphClass();
-        $address->model_id   = $workspace->getKey(); 
-        $address_model       = $this->schemaContract('address')->prepareStoreAddress($address);
-        $address->id         = $address_model->getKey();
-        unset($address->props);
+        $workspace->setAddress('OTHER',$workspace_dto->props->setting->address);
+        // $address             = &$workspace_dto->props->setting->address;
+        // $address->model_type = $workspace->getMorphClass();
+        // $address->model_id   = $workspace->getKey(); 
+        // $address_model       = $this->schemaContract('address')->prepareStoreAddress($address);
+        // $address->id         = $address_model->getKey();
+        // unset($address->props);
     }
 
     // public function prepareShowWorkspace(?Model $model = null, ? array $attributes = null): ?Model{
