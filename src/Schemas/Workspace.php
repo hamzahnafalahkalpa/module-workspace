@@ -51,26 +51,9 @@ class Workspace extends PackageManagement implements ContractsWorkspace
     }
 
     protected function prepareStoreAddressWorkspace(Model $workspace, WorkspaceData &$workspace_dto): void{
-        $workspace->setAddress('OTHER',$workspace_dto->props->setting->address);
-        // $address             = &$workspace_dto->props->setting->address;
-        // $address->model_type = $workspace->getMorphClass();
-        // $address->model_id   = $workspace->getKey(); 
-        // $address_model       = $this->schemaContract('address')->prepareStoreAddress($address);
-        // $address->id         = $address_model->getKey();
-        // unset($address->props);
+        $address_dto = &$workspace_dto->props->setting->address;
+        $address_dto->model_type = $workspace->getMorphClass();
+        $address_dto->model_id   = $workspace->getKey(); 
+        $workspace->setAddress('OTHER',$address_dto);
     }
-
-    // public function prepareShowWorkspace(?Model $model = null, ? array $attributes = null): ?Model{
-    //     $attributes ??= request()->all();
-
-    //     $model ??= $this->getWorkspace();
-    //     if (!isset($model)){
-    //         $uuid = request()->uuid;
-    //         if (!isset($uuid)) throw new \Exception('No uuid provided', 422);
-    //         $model = $this->workspace()->with($this->showUsingRelation())->uuid($uuid)->firstOrFail();
-    //     }else{
-    //         $model->load($this->showUsingRelation());
-    //     }
-    //     return $this->workspace_model = $model;
-    // }
 }

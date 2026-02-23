@@ -19,16 +19,18 @@ class StakeholderData extends Data implements DataStakeholderData{
         $model_name = config('module-workspace.stakeholder');
         if (isset($model_name)){
             $new_stakeholder = $props;
-            foreach ($props as $key => $prop) {
-                if (!is_array($prop) && Str::endsWith($key, '_id') && isset($prop)){
-                    $name = Str::replace('_id','',$key);
-                    $model = $new->{$model_name.'Model'}()->findOrFail($prop);
-                    $new_stakeholder[$name] = [
-                        'id'     => $prop,
-                        'status' => null,
-                        'name'   => $model->name ?? null,
-                        'at'     => $model->at ?? null
-                    ];
+            if (isset($new_stakeholder)){
+                foreach ($props as $key => $prop) {
+                    if (!is_array($prop) && Str::endsWith($key, '_id') && isset($prop)){
+                        $name = Str::replace('_id','',$key);
+                        $model = $new->{$model_name.'Model'}()->findOrFail($prop);
+                        $new_stakeholder[$name] = [
+                            'id'     => $prop,
+                            'status' => null,
+                            'name'   => $model->name ?? null,
+                            'at'     => $model->at ?? null
+                        ];
+                    }
                 }
             }
             $props = $new_stakeholder;

@@ -26,7 +26,7 @@ class SettingWorkspace extends ApiResource{
                 "province_id"    => $this['address']['province_id'] ?? null,
                 "subdistrict_id" => $this['address']['subdistrict_id'] ?? null
             ],
-            'logo'               => $this['logo'] ?? null
+            'logo'  => isset($this['logo']) ? workspace_url($this['logo']) : null
         ];
         return $arr;
     }

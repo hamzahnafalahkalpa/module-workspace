@@ -45,7 +45,7 @@ class Workspace extends BaseModel
     }
 
     protected function getFilePath(? string $path = null): string{
-        $path ??= 'WORKSPACES/'.$this->uuid;
+        $path ??= 'workspaces/'.$this->uuid;
         return $this->storagePath($path);
     }
 
